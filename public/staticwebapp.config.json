@@ -1,7 +1,7 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*", "/*.css", "/*.js", "/*.ico", "/*.wasm"]
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/js/*", "/health.html", "/*.wasm", "/assets/*"]
   },
   "mimeTypes": {
     ".wasm": "application/wasm",
@@ -20,14 +20,18 @@
   },
   "routes": [
     {
+      "route": "/health.html",
+      "allowedRoles": ["anonymous"]
+    },
+    {
       "route": "/*",
       "allowedRoles": ["authenticated"]
     }
   ],
   "responseOverrides": {
     "401": {
-      "redirect": "/.auth/login/aad",
-      "statusCode": 302
+      "statusCode": 302,
+      "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer"
     }
   }
 }

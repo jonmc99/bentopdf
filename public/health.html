@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Engine Health</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .status { font-weight: bold; padding: 10px; border-radius: 5px; }
+        .ok { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>PDF Health Check</h1>
+    <div id="wasm-status" class="status">Checking WASM Engine...</div>
+
+    <script>
+        function checkHealth() {
+            const statusBox = document.getElementById('wasm-status');
+            
+            // Check 1: Does the browser support WebAssembly?
+            const wasmSupported = typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function";
+
+            if (wasmSupported) {
+                statusBox.textContent = "HEALTHY: WASM Engine Supported";
+                statusBox.className = "status ok";
+                // Azure Availability tests look for a 200 OK status, which this page provides.
+            } else {
+                statusBox.textContent = "UNHEALTHY: WASM Engine Not Supported/Blocked";
+                statusBox.className = "status fail";
+                // Optional: You can force a 500 error here if you want Azure to alert immediately
+                // but usually, the text change is enough for manual checks.
+            }
+        }
+        checkHealth();
+    </script>
+</body>
+</html>
