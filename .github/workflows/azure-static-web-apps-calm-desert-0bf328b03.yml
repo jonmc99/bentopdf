@@ -33,6 +33,9 @@ jobs:
           output_location: "dist" # Built app content directory - optional
         env:
           VITE_SIMPLE_MODE: "true"
+          VITE_BRAND_NAME: "XOS PDF Tools" # Changes the page title and names
+          #VITE_BRAND_LOGO: "images/favicon-no-bg.svg" # Path relative to public/
+          VITE_FOOTER_TEXT: "© 2026 Xeretec. All rights reserved."
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -46,4 +49,5 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_DESERT_0BF328B03 }}
           action: "close"
+
 
