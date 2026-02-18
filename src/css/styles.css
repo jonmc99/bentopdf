@@ -17,13 +17,6 @@
 @import 'cropperjs/dist/cropper.css';
 @import 'tailwindcss';
 
-:root {
-  --brand-primary: #E51728;   /* buttons & highlights */
-  --brand-text: #191D32;      /* headings & body text */
-  --brand-bg: #F2F2F3;        /* page background */
-  --brand-border: #d1d5db;
-}
-
 @theme {
   --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
   --font-dancing: 'Dancing Script', cursive;
@@ -57,16 +50,16 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: var(--brand-bg);
-  color: var(--brand-text);
+  background-color: #111827;
+  color: #d1d5db;
 }
 
 .tool-card {
   transition:
     transform 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
-  border: 1px solid var(--brand-border);
-  background-color: #ffffff;
+  border: 1px solid #374151;
+  background-color: #1f2937;
   padding: 1.5rem;
   border-radius: 0.5rem;
   display: flex;
@@ -108,12 +101,13 @@ input[type='file']::file-selector-button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--brand-primary);
+  background: #4f46e5;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c41422;
+  background: #4338ca;
+  /* indigo-700 */
 }
 
 /* Style for drag-and-drop placeholder */
@@ -216,16 +210,19 @@ footer a {
 }
 
 .cta-button {
-  background-color: var(--brand-primary);
+  background-color: #4f46e5;
+  /* indigo-600 */
   color: white;
   font-weight: 600;
   padding: 12px 24px;
   border-radius: 8px;
+  /* rounded-lg */
   transition: background-color 0.2s ease-in-out;
 }
 
 .cta-button:hover {
-  background-color: #c41422; /* darker red hover */
+  background-color: #4338ca;
+  /* indigo-700 */
 }
 
 .marker-text {
@@ -467,14 +464,18 @@ footer a {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
-  color: var(--brand-text);
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .legal-content h3 {
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 600;
-  color: var(--brand-text);
+  color: rgb(129 140 248);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .legal-content p {
@@ -604,13 +605,4 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none; /* Chrome, Safari, Edge */
   margin: 0;
-}
-
-/* Global accent colour override */
-a {
-  color: var(--brand-primary);
-}
-
-a:hover {
-  color: #c41422;
 }
