@@ -23,6 +23,9 @@
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
+    
+    <!-- Clarity Tracking Script -->
+    <script src="/tracking.js"></script>
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.bentopdf.com/index.html" />
@@ -96,47 +99,6 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
     <link href="src/css/styles.css" rel="stylesheet" />
-
-    <!-- Clarity Tracking Script -->
-    <script type="text/javascript">
-        // 1. Standard Clarity Tracking Code
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "vje7jjg9ap");
-
-        // 2. Azure Static Web Apps Identity Logic
-        window.addEventListener('load', async function() {
-            try {
-                // Fetch the logged-in user details from Azure
-                const response = await fetch('/.auth/me');
-                if (!response.ok) return; // Exit if the auth endpoint fails
-
-                const payload = await response.json();
-                const { clientPrincipal } = payload;
-
-                // If a user is logged in, identify them in Clarity
-                if (clientPrincipal && window.clarity) {
-                    const userEmail = clientPrincipal.userDetails;
-                    const userId = clientPrincipal.userId;
-                    
-                    // "identify" links the session to this specific user
-                    // We send the Email as the custom user ID for easy searching
-                    window.clarity("identify", userEmail, { 
-                        "User Email": userEmail, 
-                        "User ID": userId,
-                        "Auth Provider": clientPrincipal.identityProvider
-                    });
-                    
-                    console.log("Clarity tracking identified user: " + userEmail);
-                }
-            } catch (error) {
-                // Silently fail so we don't break the app for the user
-                console.debug("Clarity identity check failed (user likely anonymous).");
-            }
-        });
-    </script>
   </head>
 
   <body class="antialiased">
